@@ -10,7 +10,7 @@ const CHAIN_PULL = 70
 
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
-var can_jump = false			# Whether the player used their air-jump
+var can_jump := false			# Whether the player used their air-jump
 
 
 func _input(event: InputEvent) -> void:
@@ -27,9 +27,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	# Walking
 	var walk = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * MOVE_SPEED
-	
 	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up"):
-		print("foi")
 		$Position2D.position.x = -16
 		$Position2D.position.y = -16	
 	elif Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_up"):
