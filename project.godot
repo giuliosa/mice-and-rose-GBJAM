@@ -90,6 +90,8 @@ window/size/width=160
 window/size/height=144
 window/size/test_width=640
 window/size/test_height=576
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gui]
 
@@ -165,6 +167,7 @@ ui_end={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Hook"
+2d_physics/layer_4="Enemy"
 
 [physics]
 
