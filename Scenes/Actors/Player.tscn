@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/aim-animation.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Actors/Mice.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Actors/mice-V2.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Actors/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Objects/Chain.tscn" type="PackedScene" id=4]
 
@@ -31,6 +31,39 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=10]
+resource_name = "Attack"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Damage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Idle"
@@ -65,6 +98,40 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "RollFall"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 3 )
@@ -75,6 +142,7 @@ scale = Vector2( 0.5, 0.5 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 4
+vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -91,10 +159,14 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Position2D"]
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
+anims/Attack = SubResource( 10 )
+anims/Damage = SubResource( 12 )
 anims/Idle = SubResource( 7 )
 anims/RESET = SubResource( 8 )
+anims/RollFall = SubResource( 11 )
+anims/Walk = SubResource( 9 )

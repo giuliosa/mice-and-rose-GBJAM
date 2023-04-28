@@ -11,21 +11,32 @@ const CHAIN_PULL = 70
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
 var can_jump := false			# Whether the player used their air-jump
-
+var is_attacking := false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if event.pressed:
-			# We clicked the mouse -> shoot()
+			# We prees the button -> shoot()
 			$Chain.shoot($Position2D.position)
+			is_attacking = true
 	elif event.is_action_released("ui_cancel"):
-		# We released the mouse -> release()
+		# We released the button -> release()
 		$Chain.release()
+		is_attacking = false
 
 # This function is called every physics frame
 func _physics_process(_delta: float) -> void:
 	# Walking
 	var walk = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * MOVE_SPEED
+	
+	if walk:
+		$AnimationPlayer.play("Walk")
+	else: 
+		$AnimationPlayer.play("Idle")
+	
+	if is_attacking:
+		$AnimationPlayer.play("Attack")
+			
 	
 	# Handle position of aim
 	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_up"):

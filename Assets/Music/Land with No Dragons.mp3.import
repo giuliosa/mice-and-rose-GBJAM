@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Land with No Dragons.mp3-c2830549b59e075a4f3396ccd48b0df1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Land with No Dragons.mp3"
+dest_files=[ "res://.import/Land with No Dragons.mp3-c2830549b59e075a4f3396ccd48b0df1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
