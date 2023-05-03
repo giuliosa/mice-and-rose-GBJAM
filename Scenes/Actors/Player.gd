@@ -28,6 +28,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	# Walking
 	var walk = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * MOVE_SPEED
+	#velocity.x = lerp(velocity.x, walk, 0.2)
 	
 	if walk:
 		$AnimationPlayer.play("Walk")
@@ -105,6 +106,7 @@ func _physics_process(_delta: float) -> void:
 
 	# Apply air friction
 	if !grounded:
+		$AnimationPlayer.play("RollFall")
 		velocity.x *= FRICTION_AIR
 		if velocity.y > 0:
 			velocity.y *= FRICTION_AIR
@@ -113,7 +115,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if grounded:
 			velocity.y = -JUMP_FORCE	# Apply the jump-force
-		elif can_jump:
-			can_jump = false	# Used air-jump
-			velocity.y = -JUMP_FORCE
+		#elif can_jump:
+		#	can_jump = false	# Used air-jump
+		#	velocity.y = -JUMP_FORCE
 

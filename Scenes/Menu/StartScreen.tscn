@@ -23,6 +23,13 @@ script = ExtResource( 2 )
 position = Vector2( 80, 72 )
 texture = ExtResource( 1 )
 
+[node name="Fog" type="ParallaxLayer" parent="ParallaxLayer"]
+script = ExtResource( 8 )
+
+[node name="Start-screen-frame4" type="Sprite" parent="ParallaxLayer/Fog"]
+position = Vector2( 126, 50 )
+texture = ExtResource( 4 )
+
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxLayer"]
 position = Vector2( 1, 0 )
 motion_mirroring = Vector2( 600, 0 )
@@ -31,13 +38,6 @@ script = ExtResource( 7 )
 [node name="Start-screen-frame5" type="Sprite" parent="ParallaxLayer/Clouds"]
 position = Vector2( 71, 55 )
 texture = ExtResource( 6 )
-
-[node name="Fog" type="ParallaxLayer" parent="ParallaxLayer"]
-script = ExtResource( 8 )
-
-[node name="Start-screen-frame4" type="Sprite" parent="ParallaxLayer/Fog"]
-position = Vector2( 126, 50 )
-texture = ExtResource( 4 )
 
 [node name="Stone" type="ParallaxLayer" parent="ParallaxLayer"]
 position = Vector2( 0, 4 )

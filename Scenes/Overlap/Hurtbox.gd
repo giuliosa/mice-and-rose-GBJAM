@@ -1,7 +1,7 @@
 extends Area2D
 
 
-#export(bool) var show_hit = true
+export(bool) var show_hit = true
 
 const HitEffect = preload("res://Scenes/Effects/HitEffect.tscn")
 

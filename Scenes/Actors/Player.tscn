@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/aim-animation.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Actors/mice-V2.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Actors/Player.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Objects/Chain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Overlap/Hurtbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -132,6 +133,9 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 8, 8 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 3 )
@@ -150,6 +154,13 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_left = -32
+limit_bottom = 200
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 16, 0 )
@@ -159,7 +170,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Position2D"]
 frames = SubResource( 6 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -170,3 +181,12 @@ anims/Idle = SubResource( 7 )
 anims/RESET = SubResource( 8 )
 anims/RollFall = SubResource( 11 )
 anims/Walk = SubResource( 9 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 13 )
+
+[editable path="Hurtbox"]
