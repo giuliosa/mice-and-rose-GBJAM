@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-const JUMP_FORCE = 600
-const MOVE_SPEED = 200
+const JUMP_FORCE = 500
+const MOVE_SPEED = 150
 const GRAVITY = 50
-const MAX_SPEED = 2000
-const FRICTION_AIR = 0.85
-const FRICTION_GROUND = 0.85
-const CHAIN_PULL = 70
+const MAX_SPEED = 1500
+const FRICTION_AIR = 0.80
+const FRICTION_GROUND = 0.80
+const CHAIN_PULL = 50
 
 var velocity = Vector2(0,0)		# The velocity of the player (kept over time)
 var chain_velocity := Vector2(0,0)
